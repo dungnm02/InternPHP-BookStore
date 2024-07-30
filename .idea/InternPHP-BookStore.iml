@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/BookStore/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/BookStore/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/BookStore/tests/Unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/BookStore/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/BookStore/vendor/brick/math" />

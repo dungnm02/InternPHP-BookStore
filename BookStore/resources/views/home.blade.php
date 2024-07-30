@@ -8,9 +8,13 @@
     <title>Document</title>
 </head>
 <body>
-<x-navigation-bar :user="$user"/>
-
-<x-book-table :books="$books"/>
-<x-footer/>
+@extends('layouts.master')
+@section('content')
+    <h1>Book List</h1>
+    {{--    Show book in card format--}}
+    @foreach($books as $book)
+        @include('components.book-card', ['book' => $book])
+    @endforeach
+@endsection
 </body>
 </html>
