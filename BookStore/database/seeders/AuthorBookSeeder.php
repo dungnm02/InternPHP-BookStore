@@ -67,5 +67,7 @@ class AuthorBookSeeder extends Seeder
             'book_id' => 7,
             'role' => 'editor'
         ]);
+
+        //TODO generate for book_id 8
     }
 }

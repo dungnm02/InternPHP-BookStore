@@ -4,114 +4,128 @@ namespace App\DTOs;
 
 class BookDTO
 {
-    private $id;
-    private $title;
-    private $coverImage; // Đường dẫn đến ảnh bìa của sách
-    private $authorsName; // Tên của tác giả, nếu có nhiều tác giả thì cách nhau bởi dấu phẩy
-    private $lowestPrice; // Giá của format có giá thấp nhất đã apply discount
-    private $highestPrice; // Giá của format có giá cao nhất đã apply discount
+    private $book;
+    private $authors;
+    private $genres;
+    private $publisher;
+    private $language;
+    private $series;
+    private $bookFormats;
 
-    public function __construct($id, $title, $coverImage, $authors, $lowestPrice, $highestPrice)
+    public function __construct()
     {
-        $this->id = $id;
-        $this->title = $title;
-        $this->coverImage = $coverImage;
-        $this->authorsName = "";
-        foreach ($authors as $author) {
-            $this->authorsName .= $author->name . ", ";
-        }
-        $this->lowestPrice = $lowestPrice;
-        $this->highestPrice = $highestPrice;
     }
 
     /**
      * @return mixed
      */
-    public function getId()
+    public function getBook()
     {
-        return $this->id;
+        return $this->book;
     }
 
     /**
-     * @param mixed $id
+     * @param mixed $book
      */
-    public function setId($id): void
+    public function setBook($book): void
     {
-        $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * @param mixed $title
-     */
-    public function setTitle($title): void
-    {
-        $this->title = $title;
+        $this->book = $book;
     }
 
     /**
      * @return mixed
      */
-    public function getCoverImage()
+    public function getAuthors()
     {
-        return $this->coverImage;
+        return $this->authors;
     }
 
     /**
-     * @param mixed $coverImage
+     * @param mixed $authors
      */
-    public function setCoverImage($coverImage): void
+    public function setAuthors($authors): void
     {
-        $this->coverImage = $coverImage;
-    }
-
-    public function getAuthorsName(): string
-    {
-        return $this->authorsName;
-    }
-
-    public function setAuthorsName(string $authorsName): void
-    {
-        $this->authorsName = $authorsName;
+        $this->authors = $authors;
     }
 
     /**
      * @return mixed
      */
-    public function getLowestPrice()
+    public function getGenres()
     {
-        return $this->lowestPrice;
+        return $this->genres;
     }
 
     /**
-     * @param mixed $lowestPrice
+     * @param mixed $genres
      */
-    public function setLowestPrice($lowestPrice): void
+    public function setGenres($genres): void
     {
-        $this->lowestPrice = $lowestPrice;
+        $this->genres = $genres;
     }
 
     /**
      * @return mixed
      */
-    public function getHighestPrice()
+    public function getPublisher()
     {
-        return $this->highestPrice;
+        return $this->publisher;
     }
 
     /**
-     * @param mixed $highestPrice
+     * @param mixed $publisher
      */
-    public function setHighestPrice($highestPrice): void
+    public function setPublisher($publisher): void
     {
-        $this->highestPrice = $highestPrice;
+        $this->publisher = $publisher;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    /**
+     * @param mixed $language
+     */
+    public function setLanguage($language): void
+    {
+        $this->language = $language;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSeries()
+    {
+        return $this->series;
+    }
+
+    /**
+     * @param mixed $series
+     */
+    public function setSeries($series): void
+    {
+        $this->series = $series;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBookFormats()
+    {
+        return $this->bookFormats;
+    }
+
+    /**
+     * @param mixed $bookFormats
+     */
+    public function setBookFormats($bookFormats): void
+    {
+        $this->bookFormats = $bookFormats;
     }
 
 }

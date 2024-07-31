@@ -1,18 +1,20 @@
 <div>
-    @include('components.navigation-bar')
-    {{--side-bar--}}
-    if (empty($noSidebar)) {
-    @include('components.side-bar')
-    }
+    <div id="main-layout">
+        {{--navigation-bar--}}
+        @include('components.navigation-bar')
+        {{--side-bar--}}
+        @if (empty($noSidebar))
+            @include('components.side-bar')
+        @endif
+        {{--search-bar--}}
+        @if (empty($noSearchBar))
+            @include('components.search-bar')
+        @endif
 
-    {{--search-bar--}}
-    if (empty($noSearchBar)) {
-    @include('components.search-bar')
-    }
+        <div class="content-container">
+            @yield('content')
+        </div>
 
-    <div class="content-container">
-        @yield('content')
+        @include('components.footer')
     </div>
-
-    @include('components.footer')
 </div>

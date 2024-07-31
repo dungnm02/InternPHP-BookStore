@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -75,6 +74,14 @@ class BookFormatSeeder extends Seeder
             'pages' => 100,
             'cover_Image' => 'null',
         ]);
+        DB::table('book_format')->insert([
+            'book_id' => 8,
+            'format_id' => 1,
+            'price' => 100000,
+            'published_date' => '2021-01-01',
+            'pages' => 100,
+            'cover_Image' => 'null',
+        ]);
 
         // format_id 2
         DB::table('book_format')->insert([
@@ -127,6 +134,14 @@ class BookFormatSeeder extends Seeder
         ]);
         DB::table('book_format')->insert([
             'book_id' => 7,
+            'format_id' => 2,
+            'price' => 200000,
+            'published_date' => '2021-01-01',
+            'pages' => 100,
+            'cover_Image' => 'null',
+        ]);
+        DB::table('book_format')->insert([
+            'book_id' => 8,
             'format_id' => 2,
             'price' => 200000,
             'published_date' => '2021-01-01',
@@ -191,6 +206,14 @@ class BookFormatSeeder extends Seeder
             'pages' => 100,
             'cover_Image' => 'null',
         ]);
+        DB::table('book_format')->insert([
+            'book_id' => 8,
+            'format_id' => 2,
+            'price' => 200000,
+            'published_date' => '2021-01-01',
+            'pages' => 100,
+            'cover_Image' => 'null',
+        ]);
 
         // format_id 4
         DB::table('book_format')->insert([
@@ -243,6 +266,14 @@ class BookFormatSeeder extends Seeder
         ]);
         DB::table('book_format')->insert([
             'book_id' => 7,
+            'format_id' => 4,
+            'price' => 50000,
+            'published_date' => '2021-01-01',
+            'pages' => 100,
+            'cover_Image' => 'null',
+        ]);
+        DB::table('book_format')->insert([
+            'book_id' => 8,
             'format_id' => 4,
             'price' => 50000,
             'published_date' => '2021-01-01',
