@@ -68,6 +68,21 @@ class AuthorBookSeeder extends Seeder
             'role' => 'editor'
         ]);
 
-        //TODO generate for book_id 8
+        DB::table('author_book')->insert([
+            'author_id' => 4,
+            'book_id' => 8,
+            'role' => 'editor'
+        ]);
+        DB::table('author_book')->insert([
+            'author_id' => 5,
+            'book_id' => 8,
+            'role' => 'editor'
+        ]);
+        DB::table('author_book')->insert([
+            'author_id' => 6,
+            'book_id' => 8,
+            'role' => 'editor'
+        ]);
+
     }
 }

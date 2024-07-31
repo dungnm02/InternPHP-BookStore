@@ -14,9 +14,4 @@ class Author extends Model
         'bio',
         'authorImagePath'
     ];
-
-    public function books()
-    {
-        $this->belongsToMany(Book::class, 'author_book', 'author_id', 'book_id');
-    }
 }

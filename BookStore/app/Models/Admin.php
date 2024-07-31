@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
-// TODO: Tìm cách để có thể kế thừa User
 class Admin extends Model
 {
     use HasFactory;

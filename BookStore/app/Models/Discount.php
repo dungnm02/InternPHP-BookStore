@@ -16,4 +16,5 @@ class Discount extends Model
         'discountPercentage',
         'discountNote'
     ];
+
 }

@@ -20,6 +20,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 2,
@@ -28,6 +29,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
 
         DB::table('book_format')->insert([
@@ -37,6 +39,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
 
         DB::table('book_format')->insert([
@@ -46,6 +49,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
 
         DB::table('book_format')->insert([
@@ -55,6 +59,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
 
         DB::table('book_format')->insert([
@@ -64,6 +69,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
 
         DB::table('book_format')->insert([
@@ -73,6 +79,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 8,
@@ -81,6 +88,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
 
         // format_id 2
@@ -91,6 +99,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 2,
@@ -99,6 +108,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 3,
@@ -107,6 +117,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 4,
@@ -115,6 +126,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 5,
@@ -123,6 +135,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 6,
@@ -131,6 +144,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 7,
@@ -139,6 +153,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 8,
@@ -147,6 +162,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
 
         // format_id 3
@@ -157,6 +173,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 2,
@@ -165,6 +182,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 3,
@@ -173,6 +191,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 4,
@@ -181,6 +200,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 5,
@@ -189,6 +209,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 6,
@@ -197,6 +218,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 7,
@@ -205,6 +227,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 8,
@@ -213,6 +236,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
 
         // format_id 4
@@ -223,6 +247,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 2,
@@ -231,6 +256,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 3,
@@ -239,6 +265,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 4,
@@ -247,6 +274,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 5,
@@ -255,6 +283,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 6,
@@ -263,6 +292,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 7,
@@ -271,6 +301,7 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
         ]);
         DB::table('book_format')->insert([
             'book_id' => 8,
@@ -279,6 +310,8 @@ class BookFormatSeeder extends Seeder
             'published_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
+            'stock' => 10
+
         ]);
 
     }

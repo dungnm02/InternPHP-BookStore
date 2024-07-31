@@ -10,7 +10,6 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        // TODO add a stock column
         Schema::create('book_format', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('book_id');
@@ -25,6 +24,7 @@ return new class extends Migration {
             $table->integer('pages');
             $table->string('cover_image');
             $table->integer('price');
+            $table->integer('stock');
         });
     }
 

@@ -33,4 +33,8 @@ class Order extends Model
         return $this->belongsTo(Customer::class);
     }
 
+    public function bookFormats()
+    {
+        return $this->belongsToMany(BookFormat::class, 'order_details', 'order_id', 'book_format_id');
+    }
 }

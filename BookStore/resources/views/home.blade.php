@@ -18,12 +18,12 @@
 @section('content')
     <div id="book-grid-container">
         {{--show book in card format--}}
-        @foreach($bookDTOs as $bookDTO)
-            @include('components.book-card', ['bookDTO' => $bookDTO])
+        @foreach($books as $book)
+            @include('components.book-card', ['book' => $book])
         @endforeach
     </div>
 
-    {{$bookDTOs->links('components.pagination')}}
+    {{$books->links('components.pagination')}}
 @endsection
 </body>
 </html>

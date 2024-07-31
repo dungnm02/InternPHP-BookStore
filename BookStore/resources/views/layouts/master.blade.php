@@ -6,11 +6,6 @@
         @if (empty($noSidebar))
             @include('components.side-bar')
         @endif
-        {{--search-bar--}}
-        @if (empty($noSearchBar))
-            @include('components.search-bar')
-        @endif
-
         <div class="content-container">
             @yield('content')
         </div>

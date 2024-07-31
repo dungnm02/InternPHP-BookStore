@@ -2,23 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\BookService;
 use App\Services\ServiceImpl\BookServiceImpl;
 use Illuminate\Routing\Controller;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    private $bookService;
+    private BookService $bookService;
 
     public function __construct(BookServiceImpl $bookService)
     {
         $this->bookService = $bookService;
     }
 
-    public function index()
+    public function index() : View
     {
-        $bookDTOs = $this->bookService->getAllBookDTOs();
+        $books = $this->bookService->getAllBook();
         return view('home', [
-            'bookDTOs' => $bookDTOs
+            'books' => $books
         ]);
     }
 }

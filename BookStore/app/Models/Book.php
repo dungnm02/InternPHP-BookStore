@@ -20,7 +20,7 @@ class Book extends Model
 
     public function authors()
     {
-        return $this->belongsToMany(Author::class, 'author_book', 'book_id', 'author_id');
+        return $this->belongsToMany(Author::class, 'author_book', 'book_id', 'author_id')->withPivot('role');
     }
 
     public function genres()
@@ -45,7 +45,8 @@ class Book extends Model
 
     public function formats()
     {
-        return $this->belongsToMany(Format::class, 'book_format', 'book_id', 'format_id');
+        return $this->belongsToMany(Format::class, 'book_format', 'book_id', 'format_id')
+            ->withPivot('price', 'published_date', 'pages', 'cover_image', 'stock');
     }
 
     /**
