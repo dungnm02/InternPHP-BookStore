@@ -25,17 +25,20 @@
 @endphp
 
 <div class="book-card-container">
-    <img id="book-cover-image" src="{{ asset('book_cover_image.jpg') }}" alt="">
-    <div class="book-card-information">
-        <h3 id="book-title">{{ $book->title }}</h3>
-        <p id="book-authors">
-            by {{ $authorsName }}
-        </p>
-        <p id="book-prices">
-            from {{ $lowestPrice }}đ to {{ $highestPrice }}đ
-        </p>
-        <button>Add to cart</button>
-    </div>
+    <img src="{{ asset('book_cover_image.jpg') }}" alt="">
+    <h3>{{ $book->title }}</h3>
+    <h4>
+        by {{ $authorsName }}
+    </h4>
+    <p>
+        from {{ $lowestPrice }}đ to {{ $highestPrice }}đ
+    </p>
+    <form action="{{ route('addCart') }}" method="POST">
+        @csrf
+        <input type="hidden" name="book_id" value="{{ $book->id }}">
+        <input type="hidden" name="quantity" value="1">
+        <button type="submit">Add to cart</button>
+    </form>
 </div>
 
 

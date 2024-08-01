@@ -1,0 +1,16 @@
+@import "css-components/navigation-bar.css";
+@import "css-components/book-card.css";
+@import "css-components/pagination.css";
+@import "css-components/footer.css";
+@import "css-components/cart.css";
+
+/* Reset all formatting */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#main-layout {
+    margin: 20px;
+}

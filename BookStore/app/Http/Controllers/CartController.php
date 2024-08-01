@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
 use App\Models\BookFormat;
 use App\Services\DiscountService;
 use App\Services\ServiceImpl\DiscountServiceImpl;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class CartController extends Controller
 {
@@ -21,69 +21,85 @@ class CartController extends Controller
 
     /**
      * Get the cart
-     * @return array
+     * @return View
      */
-    public function getCart()
+    public function getCart(): View
     {
-        return session()->get('cart');
-    }
-
-
-    /**
-     * @param Request $request
-     * @return void
-     */
-    public function addCart(Request $request)
-    {
-        $bookId = $request->input('book_id');
-        $quantity = $request->input('quantity');
-        $bookFormatId = $request->input('book_format_id');
-
-        // Check if the book is already in the cart
-        if ($this->checkIfBookExistsInCart($bookFormatId)) {
-            // update the quantity instead
-            $cart = session()->get('cart');
-            for ($i = 0; $i < count($cart); $i++) {
-                if ($cart[$i]['book_format_id'] == $bookFormatId) {
-                    $cart[$i]['quantity'] += $quantity;
-                }
-            }
-            session()->put('cart', $cart);
-            return;
-        }
-
-        if ($quantity === null && $bookFormatId === null) {
-            // When adding a book to cart from the home page
-            $quantity = 1;
-            $bookFormat = BookFormat::where('book_id', $bookId)->first();
-        } else {
-            // When adding a book to cart from the book details page - can specify quantity and format
-            $bookFormat = BookFormat::find($bookFormatId);
-        }
-
-        // Apply discount
-        $discount = $this->discountService->getAppliableDiscount($bookFormat->id);
-        if ($discount == null) {
-            $discountedPrice = 0;
-        } else {
-            $discountedPrice = $bookFormat->price - ($bookFormat->price * $discount->discount_percentage / 100);
-        }
-
-        // Package the order details
-        $orderDetails = [
-            'book_format_id' => $bookFormatId,
-            'quantity' => $quantity,
-            'price' => $bookFormat->price,
-            'discount_price' => $discountedPrice
-        ];
-
-        // Check if order already exists
+        // Create a cart if it doesn't exist
         if (!session()->has('cart')) {
             session()->put('cart', []);
         }
 
         $cart = session()->get('cart');
+        return view('cart', [
+            'cart' => $cart
+        ]);
+    }
+
+
+    /**
+     * Handle adding a book to the cart from home page or book details page
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function addCart(Request $request): RedirectResponse
+    {
+        // Create a cart if it doesn't exist
+        if (!session()->has('cart')) {
+            session()->put('cart', []);
+        }
+        $cart = session()->get('cart');
+
+        $bookId = $request->input('book_id');
+        $quantity = $request->input('quantity');
+        $bookFormatId = $request->input('book_format_id');
+
+        // Initialize values if adding from home page (missing book_format_id)
+        if ($bookFormatId === null) {
+            // Get the first format of the book
+            $bookFormat = BookFormat::where('book_id', $bookId)->first();
+            $bookFormatId = $bookFormat->id;
+        } else {
+            // When adding a book to cart from the book details page - can specify quantity and format
+            $bookFormat = BookFormat::find($bookFormatId);
+        }
+
+        // Check if the book is already in the cart
+        if ($this->checkIfBookExistsInCart($bookFormatId)) {
+            // Update the quantity instead
+            for ($i = 0; $i < count($cart); $i++) {
+                if ($cart[$i]['book_format_id'] == $bookFormatId) {
+                    $cart[$i]['quantity'] += 1;
+                }
+            }
+            session()->put('cart', $cart);
+            return redirect()->route('home');
+        }
+
+        // Apply discount if available
+        $discount = $this->discountService->getAppliableDiscount($bookFormat->id);
+        if ($discount == null) {
+            $discountAmount = 0;
+        } else {
+            $discountAmount = $bookFormat->price - ($bookFormat->price * $discount->discount_percentage / 100);
+        }
+
+        // Package the order details with extra information for showing in the cart
+        $orderDetails = [
+            'book_format_id' => $bookFormatId,
+            'quantity' => $quantity,
+            'price' => $bookFormat->price,
+            'discount_amount' => $discountAmount,
+            // Extra details
+            'book_format' => $bookFormat,
+            'format' => $bookFormat->format,
+        ];
+
+        // Add the order details to the cart
         $cart[] = $orderDetails;
+        session()->put('cart', $cart);
+
+        return redirect()->route('home');
     }
 
     /**
@@ -91,33 +107,42 @@ class CartController extends Controller
      * @param Request $request
      * @return void
      */
-    public function updateCart(Request $request)
+    public function updateCart(Request $request): void
     {
         $bookFormatId = $request->input('book_format_id');
         $newQuantity = $request->input('quantity');
 
-        // Get the current order details of this book & update the quantity
-        $cart = session()->get('cart');
-        for ($i = 0; $i < count($cart); $i++) {
-            if ($cart[$i]['book_format_id'] == $bookFormatId) {
-                $cart[$i]['quantity'] = $newQuantity;
+        if ($this->checkIfBookExistsInCart($bookFormatId)) {
+            // Get the current order details of this book & update the quantity
+            $cart = session()->get('cart');
+            for ($i = 0; $i < count($cart); $i++) {
+                if ($cart[$i]['book_format_id'] == $bookFormatId) {
+                    $cart[$i]['quantity'] = $newQuantity;
+                }
             }
+            session()->put('cart', $cart);
         }
-        session()->put('cart', $cart);
     }
 
-
-    public function removeBookFromCart(Request $request)
+    /**
+     * Handle removing a book from the cart
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function removeCart(Request $request): RedirectResponse
     {
-        $bookFormatId = $request->input('format_id');
-        $cart = session()->get('cart');
-        $newCart = [];
-        for ($i = 0; $i < count($cart); $i++) {
-            if ($cart[$i]['book_format_id'] != $bookFormatId) {
-                $newCart[] = $cart[$i];
+        $bookFormatId = $request->input('book_format_id');
+        if ($this->checkIfBookExistsInCart($bookFormatId)) {
+            $cart = session()->get('cart');
+            $newCart = [];
+            for ($i = 0; $i < count($cart); $i++) {
+                if ($cart[$i]['book_format_id'] != $bookFormatId) {
+                    $newCart[] = $cart[$i];
+                }
             }
+            session()->put('cart', $newCart);
         }
-        session()->put('cart', $newCart);
+        return redirect()->route('getCart');
     }
 
     /**
@@ -133,6 +158,7 @@ class CartController extends Controller
                 return true;
             }
         }
+
         return false;
     }
 

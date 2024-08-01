@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,4 +47,11 @@ Route::prefix('auth')->group(function () {
     Route::post('/reset-password/update-password', [AuthController::class, 'resetPasswordUpdate']);
 });
 
-Route::get('/', [HomeController::class, 'index']);
+Route::prefix('cart')->group(function () {
+    Route::get('/', [CartController::class, 'getCart'])->name('getCart');
+    Route::post('add', [CartController::class, 'addCart'])->name('addCart');
+    Route::post('remove', [CartController::class, 'removeCart'])->name('removeCart');
+    Route::post('update', [CartController::class, 'updateCart'])->name('updateCart');
+});
+
+Route::get('/', [HomeController::class, 'index'])->name('home');

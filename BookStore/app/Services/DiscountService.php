@@ -1,7 +1,7 @@
 <?php
+
 namespace App\Services;
 
-use App\Models\BookFormat;
 use App\Models\Discount;
 
 interface DiscountService
@@ -11,5 +11,5 @@ interface DiscountService
      * @param int $bookFormatId
      * @return Discount
      */
-    public function getAppliableDiscount($bookFormatId): Discount;
+    public function getAppliableDiscount($bookFormatId);
 }

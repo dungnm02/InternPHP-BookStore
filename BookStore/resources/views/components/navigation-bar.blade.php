@@ -9,21 +9,21 @@
             <a href="#">Logout</a>
         @endif
         <div>
-            <a href="#">
-                <img id="cart-icon" src="{{ asset('cart-icon.png') }}" alt="Proj">
+            <a href="{{route('getCart')}}">
+                <img src="{{ asset('cart-icon.png') }}" alt="Cart">
             </a>
         </div>
     </div>
-    <nav id="nav-main">
+    <nav id="navbar">
         <ul>
-            <li><a href=#>Home</a></li>
+            <li><a href={{route('home')}}>Home</a></li>
             <li><a href=#>Books</a></li>
             <li><a href=#>Authors</a></li>
             <li><a href=#>Publishers</a></li>
         </ul>
     </nav>
     <div id="search-bar">
-        <input type="text" placeholder="Search">
+        <input type="text" placeholder="Search for author">
         <button type="submit">Search</button>
     </div>
 </div>

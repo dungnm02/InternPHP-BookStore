@@ -1,3 +1,1 @@
-<nav class="nav">
-
-</nav>
+{{-- TODO create sidebar for filtering --}}
