@@ -8,7 +8,7 @@ class BookFormat extends Pivot
 {
     protected $fillable = [
         'price',
-        'published_date',
+        'publication_date',
         'pages',
         'cover_image',
         'stock'

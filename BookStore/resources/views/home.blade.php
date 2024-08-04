@@ -22,8 +22,21 @@
             @include('components.book-card', ['book' => $book])
         @endforeach
     </div>
-
     {{$books->links('components.pagination')}}
 @endsection
 </body>
 </html>
+
+{{--<script>--}}
+{{--    document.addEventListener('DOMContentLoaded', function () {--}}
+{{--        let bookTitles = document.getElementsByClassName('book-title');--}}
+{{--        console.log(bookTitles);--}}
+{{--        for (let i = 0; i < bookTitles.length; i++) {--}}
+{{--            bookTitles[i].addEventListener('click', function () {--}}
+{{--                let bookId = this.parentElement.getAttribute('data-book-id');--}}
+{{--                let url = `/book/${bookId}`;--}}
+{{--                fetch(url);--}}
+{{--            });--}}
+{{--        }--}}
+{{--    });--}}
+{{--</script>--}}

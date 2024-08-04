@@ -11,4 +11,5 @@ interface BookService
      * @return LengthAwarePaginator
      */
     public function getAllBook(): LengthAwarePaginator;
+
 }

@@ -29,7 +29,6 @@ class CartController extends Controller
         if (!session()->has('cart')) {
             session()->put('cart', []);
         }
-
         $cart = session()->get('cart');
         return view('cart', [
             'cart' => $cart

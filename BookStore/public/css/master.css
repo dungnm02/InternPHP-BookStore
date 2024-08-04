@@ -3,6 +3,7 @@
 @import "css-components/pagination.css";
 @import "css-components/footer.css";
 @import "css-components/cart.css";
+@import "css-components/book-details.css";
 
 /* Reset all formatting */
 * {

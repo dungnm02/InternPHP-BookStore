@@ -24,9 +24,11 @@
     }}
 @endphp
 
-<div class="book-card-container">
+<div class="book-card-container" data-book-id="{{ $book->id }}">
     <img src="{{ asset('book_cover_image.jpg') }}" alt="">
-    <h3>{{ $book->title }}</h3>
+    <a href="{{ route('getBookDetails', ['bookId' => $book->id]) }}">
+        <h3 class="book-title">{{ $book->title }}</h3>
+    </a>
     <h4>
         by {{ $authorsName }}
     </h4>

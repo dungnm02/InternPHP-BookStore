@@ -9,7 +9,6 @@
         <div class="content-container">
             @yield('content')
         </div>
-
         @include('components.footer')
     </div>
 </div>

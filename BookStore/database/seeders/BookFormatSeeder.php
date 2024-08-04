@@ -17,7 +17,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 1,
             'format_id' => 1,
             'price' => 100000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -26,7 +26,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 2,
             'format_id' => 1,
             'price' => 100000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -36,7 +36,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 3,
             'format_id' => 1,
             'price' => 100000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -46,7 +46,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 4,
             'format_id' => 1,
             'price' => 100000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -56,7 +56,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 5,
             'format_id' => 1,
             'price' => 100000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -66,7 +66,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 6,
             'format_id' => 1,
             'price' => 100000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -76,7 +76,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 7,
             'format_id' => 1,
             'price' => 100000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -85,7 +85,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 8,
             'format_id' => 1,
             'price' => 100000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -96,7 +96,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 1,
             'format_id' => 2,
             'price' => 200000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -105,7 +105,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 2,
             'format_id' => 2,
             'price' => 200000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -114,7 +114,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 3,
             'format_id' => 2,
             'price' => 200000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -123,7 +123,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 4,
             'format_id' => 2,
             'price' => 200000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -132,7 +132,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 5,
             'format_id' => 2,
             'price' => 200000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -141,7 +141,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 6,
             'format_id' => 2,
             'price' => 200000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -150,7 +150,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 7,
             'format_id' => 2,
             'price' => 200000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -159,7 +159,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 8,
             'format_id' => 2,
             'price' => 200000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -170,7 +170,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 1,
             'format_id' => 3,
             'price' => 75000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -179,7 +179,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 2,
             'format_id' => 3,
             'price' => 75000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -188,7 +188,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 3,
             'format_id' => 3,
             'price' => 75000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -197,7 +197,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 4,
             'format_id' => 3,
             'price' => 75000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -206,7 +206,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 5,
             'format_id' => 3,
             'price' => 75000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -215,7 +215,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 6,
             'format_id' => 3,
             'price' => 75000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -224,7 +224,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 7,
             'format_id' => 3,
             'price' => 75000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -233,7 +233,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 8,
             'format_id' => 2,
             'price' => 200000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -244,7 +244,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 1,
             'format_id' => 4,
             'price' => 50000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -253,7 +253,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 2,
             'format_id' => 4,
             'price' => 50000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -262,7 +262,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 3,
             'format_id' => 4,
             'price' => 50000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -271,7 +271,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 4,
             'format_id' => 4,
             'price' => 50000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -280,7 +280,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 5,
             'format_id' => 4,
             'price' => 50000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -289,7 +289,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 6,
             'format_id' => 4,
             'price' => 50000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -298,7 +298,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 7,
             'format_id' => 4,
             'price' => 50000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
@@ -307,7 +307,7 @@ class BookFormatSeeder extends Seeder
             'book_id' => 8,
             'format_id' => 4,
             'price' => 50000,
-            'published_date' => '2021-01-01',
+            'publication_date' => '2021-01-01',
             'pages' => 100,
             'cover_Image' => 'null',
             'stock' => 10
