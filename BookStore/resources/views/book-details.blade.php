@@ -6,10 +6,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Book Details</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('/css/master.css') }}">
 </head>
 <body>
@@ -17,7 +13,7 @@
 @section('content')
     <div id="main-container">
         <div id="book-container">
-            <img id="book-format-cover-image" src="{{asset('book_cover_image.jpg')}}" alt="">
+            <img id="book-format-cover-image" src="{{asset('img/book-cover-image.jpg')}}" alt="">
             <div id="book-details-container">
                 <h1>{{$book->title}}</h1>
                 {{--Author is a link that list to book by author page--}}
@@ -40,42 +36,40 @@
                     Genres:
                     @foreach($book->genres as $genre)
                         {{-- TODO: create book by genre page & controller & routing--}}
-                        <span>
-                            <a href="#">
-                                {{$genre->genre_name}}
-                            </a>
-                        </span>
+                        <a href="#">{{$genre->genre_name}}</a>
                         @if (!$loop->last)
-                            ,
+                            |
                         @endif
                     @endforeach
                 </p>
+                <hr>
                 <p>{{$book->description}}</p>
-                <div class="details-bar-container">
+                <div id="details-bar-container">
                     <div class="detail-container">
-                        <img src="" alt="">
+                        <img src="{{asset("img/book-series-icon.png")}}" alt="">
                         <p>{{$book->series->series_name}}</p>
                     </div>
                     <div class="detail-container">
-                        <img src="" alt="">
+                        <img src="{{asset("img/book-language-icon.png")}}" alt="">
                         <p>{{$book->language->language_name}}</p>
                     </div>
                     <div class="detail-container">
-                        <img src="" alt="">
+                        <img src="{{asset("img/book-publisher-icon.png")}}" alt="">
                         <p>{{$book->publisher->publisher_name}}</p>
                     </div>
                     <div class="detail-container">
-                        <img src="" alt="">
+                        <img src="{{asset("img/book-pages-icon.png")}}" alt="">
                         <p id="book-format-pages"></p>
                     </div>
                     <div class="detail-container">
-                        <img src="" alt="">
+                        <img src="{{asset("img/book-publication-date-icon.png")}}" alt="">
                         <p id="book-format-publication-date"></p>
                     </div>
                 </div>
             </div>
             <div id="book-formats-container">
                 <select id="book-format-select">
+                    <option value="-1" disabled selected hidden>Please select a format</option>
                     @foreach($book->formats as $format)
                         <option value="{{ $format->pivot->id}}">
                             {{ $format->format_name }} - {{ $format->pivot->price }}đ
@@ -91,19 +85,40 @@
                     <p id="book-format-stock"></p>
                 </div>
                 <div class="book-format-detail-container">
-                    <label for="book-format-stock">Select quantity</label>
+                    <label for="book-format-stock">Select quantity:</label>
                     <input name="" type="number" min="1" max="99">
                 </div>
-                <button>Add to cart</button>
+                <form id="add-to-cart-form" action="{{ route('addCart') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="book_id" value="{{ $book->id }}">
+                    <input type="hidden" name="format_id" id="format-id">
+                    <input type="hidden" name="quantity" id="quantity">
+                    <button type="submit">Add to cart</button>
+                </form>
             </div>
         </div>
-        <div>
-            <p>About the authors</p>
+        <hr>
+        <div id="authors-container">
+            <h1>About the authors</h1>
+            @foreach($book->authors as $author)
+                <div class="author-details-container">
+                    <img src="{{asset('img/author-icon.png')}}" alt="">
+                    <a href="#">
+                        <h2>{{$author->author_name}}</h2>
+                    </a>
+                    <p>{{$author->bio}}</p>
+                </div>
+            @endforeach
         </div>
-        <div>
-            <p>Series</p>
-            <div>
-                <p>Books in series</p>
+        <hr>
+        <div id="series-container">
+            <h1>About the series</h1>
+            <div id="series-details-container">
+                <img src="{{asset('img/book-series-icon.png')}}" alt="">
+                <a href="#">
+                    <h1>{{$book->series->series_name}}</h1>
+                </a>
+                <p>{{$book->series->description}}</p>
             </div>
         </div>
     </div>
@@ -129,6 +144,28 @@
             document.getElementById('book-format-publication-date').innerText = bookFormat.pivot.publication_date;
             // Update book cover image
             // document.getElementById('book-format-cover-image').src = bookFormat.pivot.cover_image;
+            // Update quantity input max value
+            document.querySelector('input[type="number"]').max = bookFormat.pivot.stock;
+
+            const formatSelect = document.getElementById('book-format-select');
+            const quantityInput = document.querySelector('input[type="number"]');
+            const formatIdInput = document.getElementById('format-id');
+            const quantityHiddenInput = document.getElementById('quantity');
+
+            formatSelect.addEventListener('change', function () {
+                const bookFormatId = this.value;
+                const bookFormat = data.formats.find(format => format.pivot.id === Number(bookFormatId));
+                document.getElementById('book-format-price').innerText = bookFormat.pivot.price + 'đ';
+                document.getElementById('book-format-stock').innerText = bookFormat.pivot.stock;
+                document.getElementById('book-format-pages').innerText = bookFormat.pivot.pages;
+                document.getElementById('book-format-publication-date').innerText = bookFormat.pivot.publication_date;
+                quantityInput.max = bookFormat.pivot.stock;
+                formatIdInput.value = bookFormatId;
+            });
+
+            document.querySelector('form#add-to-cart-form').addEventListener('submit', function (event) {
+                quantityHiddenInput.value = quantityInput.value;
+            });
         });
     });
 </script>

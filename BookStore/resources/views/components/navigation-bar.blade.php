@@ -10,7 +10,7 @@
         @endif
         <div>
             <a href="{{route('getCart')}}">
-                <img src="{{ asset('cart-icon.png') }}" alt="Cart">
+                <img src="{{ asset('img/cart-icon.png') }}" alt="Cart">
             </a>
         </div>
     </div>
