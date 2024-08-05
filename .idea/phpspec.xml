@@ -20,6 +20,9 @@
       <PhpSpecSuiteConfiguration>
         <option name="myPath" value="$PROJECT_DIR$/BookStore" />
       </PhpSpecSuiteConfiguration>
+      <PhpSpecSuiteConfiguration>
+        <option name="myPath" value="$PROJECT_DIR$/BookStore" />
+      </PhpSpecSuiteConfiguration>
     </suites>
   </component>
 </project>

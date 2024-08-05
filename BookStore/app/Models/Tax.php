@@ -13,4 +13,7 @@ class Tax extends Model
         'taxName',
         'taxRate'
     ];
+
+    public $timestamps = false;
+
 }

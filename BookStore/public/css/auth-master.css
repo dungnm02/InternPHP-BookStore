@@ -1,0 +1,108 @@
+/* File: BookStore/public/css/register.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: #fff;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border: 2px solid #000;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 10px 10px 0 #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    text-transform: uppercase;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+}
+
+label {
+    display: block;
+    width: 90%;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    border: 2px solid #000;
+    font-size: 1em;
+}
+
+button {
+    width: 50%;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #000;
+    cursor: pointer;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Link container styles */
+#form-link-container {
+    width: 93%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+#form-link-container a {
+    text-decoration: none;
+}
+
+#form-link-container a:hover {
+    text-decoration: underline;
+}
+
+
+/* Error message styles */
+.error {
+    color: #333; /* Neutral dark gray */
+    background-color: #f2f2f2; /* Neutral light gray */
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* General message styles */
+.message {
+    color: #333; /* Neutral dark gray */
+    background-color: #f2f2f2; /* Neutral light gray */
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}

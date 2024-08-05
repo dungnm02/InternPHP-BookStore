@@ -4,20 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
-// TODO: Tìm cách để có thể kế thừa User
 class Customer extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'address',
-        'phoneNumber',
+        'phone_number',
     ];
 
-    public function user(): MorphOne
+    public $timestamps = false;
+
+    public function user(): HasOne
     {
-        return $this->morphOne(User::class, 'users');
+        return $this->hasOne(User::class, 'id', 'id');
     }
+
+
 }

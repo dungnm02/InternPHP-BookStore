@@ -20,10 +20,11 @@ return new class extends Migration {
             $table->foreign('format_id')->references('id')
                 ->on('formats')
                 ->onDelete('cascade');
-            $table->date('published_date');
+            $table->date('publication_date');
             $table->integer('pages');
             $table->string('cover_image');
             $table->integer('price');
+            $table->integer('stock');
         });
     }
 

@@ -14,4 +14,7 @@ class Series extends Model
         'description',
         'seriesCoverImage'
     ];
+
+    public $timestamps = false;
+
 }

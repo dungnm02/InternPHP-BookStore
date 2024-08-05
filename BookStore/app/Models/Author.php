@@ -9,14 +9,12 @@ class Author extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+
     protected $fillable = [
         'authorName',
         'bio',
         'authorImagePath'
     ];
-
-    public function books()
-    {
-        $this->belongsToMany(Book::class, 'author_book', 'author_id', 'book_id');
-    }
 }

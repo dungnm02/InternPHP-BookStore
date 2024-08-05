@@ -84,7 +84,6 @@
       <excludeFolder url="file://$MODULE_DIR$/BookStore/vendor/sebastian/object-enumerator" />
       <excludeFolder url="file://$MODULE_DIR$/BookStore/vendor/sebastian/object-reflector" />
       <excludeFolder url="file://$MODULE_DIR$/BookStore/vendor/sebastian/recursion-context" />
-      <excludeFolder url="file://$MODULE_DIR$/BookStore/vendor/sebastian/type" />
       <excludeFolder url="file://$MODULE_DIR$/BookStore/vendor/sebastian/version" />
       <excludeFolder url="file://$MODULE_DIR$/BookStore/vendor/spatie/backtrace" />
       <excludeFolder url="file://$MODULE_DIR$/BookStore/vendor/spatie/error-solutions" />

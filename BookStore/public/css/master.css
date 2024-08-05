@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import "css-components/navigation-bar.css";
+@import "css-components/book-card.css";
+@import "css-components/pagination.css";
+@import "css-components/footer.css";
+@import "css-components/cart.css";
+@import "css-components/book-details.css";
+
+/* Reset all formatting */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#main-layout {
+    margin: 20px;
+}

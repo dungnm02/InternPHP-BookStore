@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
 class Book extends Model
 {
@@ -13,14 +12,13 @@ class Book extends Model
     protected $fillable = [
         'title',
         'description',
-        'publicationDate',
-        'pages',
-        'coverImage'
     ];
+
+    public $timestamps = false;
 
     public function authors()
     {
-        return $this->belongsToMany(Author::class, 'author_book', 'book_id', 'author_id');
+        return $this->belongsToMany(Author::class, 'author_book', 'book_id', 'author_id')->withPivot('role');
     }
 
     public function genres()
@@ -45,56 +43,8 @@ class Book extends Model
 
     public function formats()
     {
-        return $this->belongsToMany(Format::class, 'book_format', 'book_id', 'format_id');
+        return $this->belongsToMany(Format::class, 'book_format', 'book_id', 'format_id')
+            ->withPivot('id', 'price', 'publication_date', 'pages', 'cover_image', 'stock');
     }
 
-    /**
-     * Find books by title
-     * @param $title
-     */
-    public function findByTitle($title)
-    {
-        return DB::table('books')
-            ->where('title', $title)
-            ->get('id');
-    }
-
-    /**
-     * Find books by publication year
-     * @param $publicationYear
-     */
-    public function findByPublicationYear($publicationYear)
-    {
-        return DB::table('books')
-            ->where('publication_year', $publicationYear)
-            ->get('id');
-    }
-
-    /**
-     * Find books by author id list
-     * @param $authorIds
-     */
-    public function findByAuthorIds($authorIds)
-    {
-        return $booksId = DB::table('books')
-            ->join('book_author', 'books.id', '=', 'book_author.book_id')
-            ->whereIn('book_author.author_id', $authorIds)
-            ->groupBy('books.id')
-            ->havingRaw('COUNT(DISTINCT book_author.author_id) = ?', [count($authorIds)])
-            ->get('books.id');
-    }
-
-    /**
-     * Find books by genre id list
-     * @param $genreIds
-     */
-    public function findByGenreIds($genreIds)
-    {
-        return $booksId = DB::table('books')
-            ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
-            ->whereIn('book_genre.genre_id', $genreIds)
-            ->groupBy('books.id')
-            ->havingRaw('COUNT(DISTINCT book_genre.genre_id) = ?', [count($genreIds)])
-            ->get('books.id');
-    }
 }

@@ -12,6 +12,7 @@ class Invoice extends Model
     protected $fillable = [
         'finishedDate',
     ];
+    public $timestamps = false;
 
     public function order()
     {

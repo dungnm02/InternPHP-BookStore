@@ -2,23 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
+use App\Services\BookService;
+use App\Services\ServiceImpl\BookServiceImpl;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    public function __construct(private Book $book)
+    private BookService $bookService;
+
+    public function __construct(BookServiceImpl $bookService)
     {
-        parent::__construct();
+        $this->bookService = $bookService;
     }
 
-    public function index()
+    public function index() : View
     {
+        $books = $this->bookService->getAllBook();
         return view('home', [
-            'books' => DB::table('books')->paginate(24),
-            'genres' => DB::table('genres')->get(),
-            'publishers' => DB::table('publishers')->get(),
+            'books' => $books
         ]);
     }
 }

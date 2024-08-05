@@ -4,15 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
-// TODO: Tìm cách để có thể kế thừa User
 class Admin extends Model
 {
     use HasFactory;
 
-    public function user(): MorphOne
+    protected $primaryKey = 'user_id';
+    public $timestamps = false;
+
+    public function user(): HasOne
     {
-        return $this->morphOne(User::class, 'users');
+        return $this->hasOne(User::class);
     }
 }
