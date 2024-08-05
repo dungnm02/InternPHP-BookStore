@@ -17,4 +17,7 @@ class Discount extends Model
         'discountNote'
     ];
 
+    public $timestamps = false;
+
+
 }

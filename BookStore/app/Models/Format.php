@@ -12,6 +12,7 @@ class Format extends Model
     protected $fillable = [
         'formatName'
     ];
+    public $timestamps = false;
 
     public function books()
     {

@@ -4,19 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submit OTP</title>
+    <link rel="stylesheet" href="{{ asset('/css/auth-master.css') }}">
 </head>
 <body>
 <div>
-    <h2>OTP Verification for {{ session('email') }}</h2>
-    @if ($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
-    <form action="{{url('/auth/reset-password/check-otp')}}" method="POST">
+    <form action="{{route('reset-password-check-otp.post')}}" method="POST">
         @csrf
+        <h1>OTP Verification for {{ session('email') }}</h1>
+        @if(session('message'))
+            <div class="message">{{ session('message') }}</div>
+        @endif
         <label for="otp">OTP:</label>
         <input type="text" id="otp" name="otp" required>
         <button type="submit">Verify OTP</button>

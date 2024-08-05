@@ -12,6 +12,7 @@ class Genre extends Model
     protected $fillable = [
         'genreName'
     ];
+    public $timestamps = false;
 
     public function books()
     {

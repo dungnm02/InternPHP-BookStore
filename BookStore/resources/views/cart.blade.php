@@ -7,10 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Cart</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('/css/master.css') }}">
 </head>
 <body>
@@ -29,6 +25,7 @@
 </html>
 
 <script>
+    "use strict";
     document.addEventListener('DOMContentLoaded', function () {
         let cartInputs = document.getElementsByClassName('cart-quantity-input');
         for (let i = 0; i < cartInputs.length; i++) {
@@ -43,7 +40,6 @@
                     book_format_id: bookFormatId,
                     quantity: quantity
                 };
-
                 // Send a POST request to the server, so it can update cart in session
                 fetch(url, {
                     method: 'POST',

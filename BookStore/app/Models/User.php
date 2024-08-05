@@ -12,13 +12,14 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $primaryKey = 'id';
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'fullName',
+        'full_name',
         'username',
         'email',
         'dob'
@@ -33,4 +34,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'remember_token',
     ];
+
+    public $timestamps = false;
+
+    public function findByEmail(string $email): ?User
+    {
+        return $this->where('email', $email)->first();
+    }
 }

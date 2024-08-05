@@ -11,5 +11,5 @@ interface DiscountService
      * @param int $bookFormatId
      * @return Discount
      */
-    public function getAppliableDiscount($bookFormatId);
+    public function getApplicableDiscount($bookFormatId): Discount;
 }

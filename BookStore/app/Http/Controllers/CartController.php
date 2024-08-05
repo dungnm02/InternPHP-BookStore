@@ -76,7 +76,7 @@ class CartController extends Controller
         }
 
         // Apply discount if available
-        $discount = $this->discountService->getAppliableDiscount($bookFormat->id);
+        $discount = $this->discountService->getApplicableDiscount($bookFormat->id);
         if ($discount == null) {
             $discountAmount = 0;
         } else {

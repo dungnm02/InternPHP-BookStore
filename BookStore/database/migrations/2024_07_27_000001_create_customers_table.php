@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('id')->primary();
             $table->foreign('id')->references('id')->on('users')
                 ->onDelete('cascade');
-            $table->text('address');
+            $table->text('address')->nullable();
             $table->string('phone_number');
         });
     }

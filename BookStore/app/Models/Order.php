@@ -18,6 +18,9 @@ class Order extends Model
         'customerNote'
     ];
 
+    public $timestamps = false;
+
+
     public function paymentMethod()
     {
         return $this->belongsTo(PaymentMethod::class);

@@ -14,6 +14,8 @@ class Book extends Model
         'description',
     ];
 
+    public $timestamps = false;
+
     public function authors()
     {
         return $this->belongsToMany(Author::class, 'author_book', 'book_id', 'author_id')->withPivot('role');

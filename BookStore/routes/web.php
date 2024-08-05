@@ -18,34 +18,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth.basic')->group(function () {
-    Route::get('/', [AuthController::class, 'index']);
-    Route::get('logout', [AuthController::class, 'logout']);
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
-Route::prefix('auth')->group(function () {
-    Route::get('register', function () {
-        return view('auth.register');
-    });
-    Route::post('register', [AuthController::class, 'register']);
-    Route::get('login', function () {
-        return view('auth.login');
-    });
-    Route::post('authenticate', [AuthController::class, 'login']);
+Route::prefix('auth')->middleware('guest')->group(function () {
+    // Register
+    Route::view('register', 'auth.register')->name('register.get');
+    Route::post('register', [AuthController::class, 'register'])->name('register.post');
+    // Login
+    Route::view('login', 'auth.login')->name('login.get');
+    Route::post('login', [AuthController::class, 'login'])->name('login.post');
     // Email verification + generate OTP
-    Route::get('/reset-password', function () {
-        return view('auth.request-reset-password');
-    });
-    Route::post('/reset-password', [AuthController::class, 'requestResetPassword']);
+    Route::view('reset-password', 'auth.reset-password-request')->name('reset-password.get');
+    Route::post('reset-password', [AuthController::class, 'requestResetPassword'])->name('reset-password.post');
     // Check OTP
-    Route::get('/reset-password/check-otp', function () {
-        return view('auth.reset-password-check-otp');
-    });
-    Route::post('/reset-password/check-otp', [AuthController::class, 'resetPasswordCheckOTP']);
+    Route::view('reset-password/check-otp', 'auth.reset-password-submit-otp')->name('reset-password-check-otp.get');
+    Route::post('reset-password/check-otp', [AuthController::class, 'resetPasswordCheckOTP'])->name('reset-password-check-otp.post');
     // Update password
-    Route::get('/reset-password/update-password', function () {
-        return view('auth.reset-password-update');
-    });
-    Route::post('/reset-password/update-password', [AuthController::class, 'resetPasswordUpdate']);
+    Route::view('reset-password/update-password', 'auth.reset-password-update-password')->name('reset-password-update-password.get');
+    Route::post('reset-password/update-password', [AuthController::class, 'resetPasswordUpdate'])->name('reset-password-update-password.post');
 });
 
 Route::prefix('cart')->group(function () {

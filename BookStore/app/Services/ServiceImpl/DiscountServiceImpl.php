@@ -2,20 +2,26 @@
 
 namespace App\Services\ServiceImpl;
 
+use App\Models\BookFormat;
 use App\Models\Discount;
 use App\Services\DiscountService;
 
 class DiscountServiceImpl implements DiscountService
 {
-    public function getAppliableDiscount($bookFormatId)
+    private BookFormat $bookFormatRepo;
+
+    public function __construct(BookFormat $bookFormatRepo)
     {
-        // Get the discounts that is in active period and has the highest discount percentage
-        $discount = Discount::join('book_format_discount', 'discounts.id', '=', 'book_format_discount.discount_id')
-            ->where('book_format_discount.book_format_id', $bookFormatId)
-            ->where('discounts.start_date', '<=', now())
-            ->where('discounts.end_date', '>=', now())
-            ->orderBy('discounts.discount_percentage', 'desc')
+        $this->bookFormatRepo = $bookFormatRepo;
+    }
+
+    public function getApplicableDiscount($bookFormatId): Discount
+    {
+        // Get the discount that is applicable for this book format and has the highest discount percentage
+        return $this->bookFormatRepo->find($bookFormatId)->discounts()
+            ->where('start_date', '<=', now())
+            ->where('end_date', '>=', now())
+            ->orderBy('discount_percentage', 'desc')
             ->first();
-        return $discount;
     }
 }

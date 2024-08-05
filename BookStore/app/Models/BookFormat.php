@@ -14,6 +14,9 @@ class BookFormat extends Pivot
         'stock'
     ];
 
+    public $timestamps = false;
+
+
     public function book()
     {
         return $this->belongsTo(Book::class);

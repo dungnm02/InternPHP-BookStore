@@ -13,4 +13,7 @@ class ShippingType extends Model
         'shippingTypeName',
         'price'
     ];
+
+    public $timestamps = false;
+
 }

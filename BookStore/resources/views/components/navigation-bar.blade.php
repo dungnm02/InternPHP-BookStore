@@ -1,12 +1,12 @@
 <div id="navbar-container">
     <div id="user-bar">
         <h1>BOOKSTORE</h1>
-        @if(empty($user))
-            <a href="#">Login</a>
-            <a href="#">Register</a>
+        @if(auth()->guest())
+            <a href="{{route('login.get')}}">Login</a>
+            <a href="{{route('register.get')}}">Register</a>
         @else
-            <a href="#">Hello {{$user->fullName}}}</a>
-            <a href="#">Logout</a>
+            <a href="#">Hello, {{auth()->user()->full_name}}</a>
+            <a href="{{route('logout')}}">Logout</a>
         @endif
         <div>
             <a href="{{route('getCart')}}">

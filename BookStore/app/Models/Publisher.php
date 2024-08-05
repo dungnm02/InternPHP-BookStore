@@ -12,4 +12,7 @@ class Publisher extends Model
     protected $fillable = [
         'publisherName',
     ];
+
+    public $timestamps = false;
+
 }
