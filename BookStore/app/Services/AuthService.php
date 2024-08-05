@@ -16,7 +16,7 @@ interface AuthService
      * @param string $email
      * @return array|null
      */
-    public function getResetPasswordRecordByEmail(string $email): ?array;
+    public function getResetPasswordOTPByEmail(string $email): ?string;
 
     /**
      * Handle the request to reset password, generate OTP and send email
@@ -28,8 +28,8 @@ interface AuthService
     /**
      * Check if the OTP is valid
      * @param string $email
-     * @param string $otp
+     * @param string $requestOTP
      * @return bool
      */
-    public function checkOTP(string $email, string $otp): bool;
+    public function checkResetPasswordOTP(string $email, string $requestOTP): bool;
 }

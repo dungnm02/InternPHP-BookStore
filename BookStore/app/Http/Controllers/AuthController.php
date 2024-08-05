@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\SendRequestResetPasswordEmail;
 use App\Models\Customer;
 use App\Models\User;
 use App\Rules\Password;
 use App\Services\AuthService;
 use App\Services\ServiceImpl\AuthServiceImpl;
-use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -126,7 +123,7 @@ class AuthController extends Controller
 
         $request->session()->put('resetPasswordEmail', $email);
         // Check if user had already requested resetting password before, if they did redirect to check OTP page
-        if ($this->authService->hasRequestedResetPassword($email)) {
+        if ($this->authService->getResetPasswordOTPByEmail($email) !== null) {
             return redirect()->route('reset-password-check-otp.get');
         }
 
@@ -157,30 +154,22 @@ class AuthController extends Controller
             return redirect()->route('login.get')->with(['message' => 'Error occurred, please try again']);
         }
 
-        // TODO package as a service
-        $otpByEmail = DB::table('password_reset_tokens')->where('email', $email)->first();
-        if ($otpByEmail) {
-            // Check if OTP is valid
-            if (Hash::check($request->otp, $otpByEmail->token)) {
-                DB::table('password_reset_tokens')->where('email', $email)->delete(); // Delete OTP after verified
-                $request->session()->put('isVerified', true);
-                return redirect()->route('reset-password-update-password.get');
-            }
-            // If OTP is invalid
-            return back()->with([
-                'message' => 'Invalid OTP'
-            ]);
+        // Compare OTP
+        if ($this->authService->checkResetPasswordOTP($email, $request->otp)) {
+            $request->session()->put('isVerified', true);
+            return redirect()->route('reset-password-update-password.get');
         }
 
-        // If OTP by email is not found
-        return redirect()->route('login.get')->with(['message' => 'Not authorized']);
+        return back()->with([
+            'message' => 'Invalid OTP'
+        ]);
     }
 
     /**
      * Handle updating password
      * @param Request $request
      */
-    public function resetPasswordUpdate(Request $request)
+    public function resetPasswordUpdate(Request $request): RedirectResponse
     {
         // Check if isVerified is true
         if (!$request->session()->get('isVerified')) {
@@ -198,15 +187,18 @@ class AuthController extends Controller
             ]);
         }
 
-        // TODO package as a service
         // Update password
-        $email = $request->session()->get('email');
-        $user = DB::table('users')->where('email', $email)->first();
+        $email = $request->session()->get('resetPasswordEmail');
+        $user = $this->userRepo->findByEmail($email);
         if ($user) {
-            DB::table('users')->where('email', $email)->update([
-                'password' => Hash::make($request->password)
-            ]);
-            $request->session()->flush(); // Delete the reset password session
+            // Save the new password
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            // Delete the information in reset password session
+            $request->session()->forget('resetPasswordEmail');
+            $request->session()->forget('isVerified');
+
             return redirect()->route('login.get')->with([
                 'message' => 'Password updated successfully, please login'
             ]);

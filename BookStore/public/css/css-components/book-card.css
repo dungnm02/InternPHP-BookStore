@@ -74,3 +74,13 @@
     background-color: #f2f2f2;
     color: #000000;
 }
+
+.book-card-container a {
+    text-decoration: none;
+    color: #000;
+}
+
+.book-card-container a:hover {
+    text-decoration: underline;
+}
+

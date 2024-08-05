@@ -39,9 +39,9 @@ class AuthServiceImpl implements AuthService
         }
     }
 
-    public function getResetPasswordRecordByEmail(string $email)
+    public function getResetPasswordOTPByEmail(string $email): ?string
     {
-        return DB::table('password_reset_tokens')->where('email', $email)->first();
+        return DB::table('password_reset_tokens')->where('email', $email)->get('token')->first()?->token;
     }
 
     public function handleResetPasswordRequest(string $email): bool
@@ -56,7 +56,6 @@ class AuthServiceImpl implements AuthService
             ]);
             // Send email
             SendRequestResetPasswordEmail::dispatch($email, $otp);
-
             return true;
         } catch (Exception $e) {
             // TODO handle exception
@@ -64,8 +63,14 @@ class AuthServiceImpl implements AuthService
         }
     }
 
-    public function checkOTP(string $email, string $otp): bool
+    public function checkResetPasswordOTP(string $email, string $requestOTP): bool
     {
-
+        $otp = $this->getResetPasswordOTPByEmail($email);
+        if ($otp != null && Hash::check($requestOTP, $otp)) {
+            // Delete the OTP in the database
+            DB::table('password_reset_tokens')->where('email', $email)->delete();
+            return true;
+        }
+        return false;
     }
 }
