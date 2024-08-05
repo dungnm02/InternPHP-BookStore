@@ -1,15 +1,246 @@
+/* Reset all formating*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
 #book-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 20px;
+    gap: 20px;
+}
+
+/*-------------------------------------------------------------------*/
+#book-format-cover-image {
+    width: 20%;
+    height: calc(20% * 1.5);
+    border: 1px solid #000;
+}
+
+/*-------------------------------------------------------------------*/
+#book-details-container {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    width: 60%;
+    height: 500px;
+    gap: 10px;
+    background-color: #fff; /* White background */
+    border: 1px solid #000; /* Thick black border */
+    padding: 20px; /* Add padding */
+    font-family: 'Montserrat', sans-serif; /* Sans-serif font */
+}
+
+#book-details-container h1 {
+    font-size: 24px;
+}
+
+#book-details-container h2 {
+    font-size: 16px;
+}
+
+#book-details-container p {
+    font-size: 16px; /* Larger font size */
+    color: #000; /* Black text */
+}
+
+#book-details-container a {
+    text-decoration: none;
+    color: dimgray;
+}
+
+#book-details-container a:hover {
+    text-decoration: underline;
+}
+
+/*-------------------------------------------------------------------*/
+#details-bar-container {
+    display: flex;
+    margin-top: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px;
+}
+
+#details-bar-container::-webkit-scrollbar {
+    display: none;
+}
+
+.detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+}
+
+.detail-container img {
+    width: 50px;
+    height: 50px;
+    margin: 10px 50px;
+}
+
+#book-details-container .detail-container p {
+    text-align: center;
+    margin: 0;
+    font-size: 13px;
+    color: #000;
+    font-weight: bold;
+}
+
+#book-formats-container {
+    display: flex;
+    flex-direction: column;
+    align-content: space-evenly;
+    gap: 20px;
+    width: 20%;
+    background-color: #f0f0f0; /* Light grey background */
+    border: 1px solid #000; /* Thick black border */
+    padding: 20px; /* Add padding */
+    font-family: 'Montserrat', sans-serif; /* Monospace font */
+}
+
+#book-formats-container select,
+#book-formats-container .book-format-detail-container,
+#book-formats-container button {
+    background-color: #fff; /* White background */
+    padding: 10px; /* Add padding */
+    font-size: 16px; /* Larger font size */
+}
+
+#book-formats-container button {
+    margin-top: auto;
+    border: 1px solid #000; /* Thick black border */
+}
+
+#book-formats-container button:hover {
+    cursor: pointer; /* Pointer cursor for button */
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
 }
 
 
-/*  */
-#book-format-cover-image {
-    width: 300px;
-    height: 300px;
-    margin-right: 20px;
-    border: 2px solid #e0e0e0;
+#book-formats-container input[type="number"] {
+    background-color: #fff; /* White background */
+    padding: 10px; /* Add padding */
+    font-size: 16px; /* Larger font size */
+    margin-bottom: 10px; /* Space between elements */
+    width: 100%; /* Full width */
+    border: none;
+}
+
+
+/*-------------------------------------------------------------------*/
+#authors-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff; /* White background */
+    padding: 20px; /* Add padding */
+    font-family: 'Courier New', Courier, monospace; /* Monospace font */
+}
+
+#authors-container h1 {
+    font-size: 24px; /* Larger font size */
+    color: #000; /* Black text */
+    font-weight: bold; /* Bold text */
+    font-family: 'Montserrat', sans-serif; /* Sans-serif font */
+}
+
+.author-details-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid #000; /* Thick black border */
+    padding: 15px;
+    font-family: 'Montserrat', sans-serif; /* Sans-serif font */
+}
+
+.author-details-container img {
+    width: 100px; /* Fixed width for images */
+    height: 100px; /* Fixed height for images */
+    margin-bottom: 10px; /* Space below the image */
+}
+
+.author-details-container h2 {
+    font-size: 20px; /* Larger font size */
+    color: #000; /* Black text */
+    font-weight: bold; /* Bold text */
+    margin-bottom: 10px; /* Space below the name */
+}
+
+.author-details-container p {
+    font-size: 16px; /* Larger font size */
+    color: #000; /* Black text */
+    text-align: left; /* Centered text */
+}
+
+.author-details-container a {
+    text-decoration: none;
+}
+
+
+.author-details-container a:hover {
+    text-decoration: underline;
+}
+
+
+#series-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff; /* White background */
+    padding: 20px; /* Add padding */
+}
+
+#series-container h1 {
+    font-size: 24px; /* Larger font size */
+    color: #000; /* Black text */
+    font-weight: bold; /* Bold text */
+    font-family: 'Montserrat', sans-serif; /* Sans-serif font */
+}
+
+#series-details-container {
+    border: 1px solid #000; /* Thick black border */
+    background-color: #fff; /* White background */
+    padding: 20px;
+    font-family: 'Montserrat', Courier, monospace; /* Monospace font */
+}
+
+#series-container img {
+    width: 100px; /* Fixed width for images */
+    height: 100px; /* Fixed height for images */
+    margin-bottom: 10px; /* Space below the image */
+}
+
+#series-container a {
+    text-decoration: none; /* Remove underline from links */
+}
+
+#series-container a:hover {
+    text-decoration: underline; /* Remove underline from links */
+}
+
+#series-container h1 {
+    font-size: 24px; /* Larger font size */
+    color: #000; /* Black text */
+    font-weight: bold; /* Bold text */
+    margin-bottom: 10px; /* Space below the heading */
+}
+
+#series-container p {
+    font-size: 16px; /* Larger font size */
+    color: #000; /* Black text */
+    text-align: left; /* Left-aligned text */
+    font-family: 'Montserrat', Courier, monospace; /* Monospace font */
 }

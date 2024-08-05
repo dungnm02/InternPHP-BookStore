@@ -15,7 +15,7 @@ class DiscountServiceImpl implements DiscountService
         $this->bookFormatRepo = $bookFormatRepo;
     }
 
-    public function getApplicableDiscount($bookFormatId): Discount
+    public function getApplicableDiscount($bookFormatId): ?Discount
     {
         // Get the discount that is applicable for this book format and has the highest discount percentage
         return $this->bookFormatRepo->find($bookFormatId)->discounts()

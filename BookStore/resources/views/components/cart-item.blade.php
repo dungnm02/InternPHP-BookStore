@@ -1,5 +1,5 @@
 <div class="cart-item">
-    <img id="cart-book-cover-image" src="{{ asset('book_cover_image.jpg') }}" alt="">
+    <img id="cart-book-cover-image" src="{{ asset('img/book-cover-image.jpg') }}" alt="">
     <h3 id="cart-book-title">{{ $cartItem["book_format"]->book->title}}</h3>
     <p id="cart-book-authors"></p>
     {{-- Show the discounted price if discount is applied --}}
